@@ -1,17 +1,12 @@
-// Program Name: Who wants to be a millionare
+// Program Name: Who wants to be a millionare?
 // Purpose: This is a game that gives money to the player if they answered a list of hard questions.
 //Author: Isabella Nieto
 //Date: May 1, 2019
 
 #include <cstdlib>
-#include <unistd.h>
 #include <iostream>
 using namespace std;
 
-// const int MILLISECONDS_PER_SECOND=1000;
-// const int TIME_TO_ANSWER=30*MILLISECONDS_PER_SECOND;
-const int Yes='1';
-const int No='2';
 
 void main_menu();
 void one_hundred_section();
@@ -35,20 +30,46 @@ bool used_public_clue= false;
 bool used_call_clue=false;
 bool used_fifty_fifty=false;
 
-bool taken_one_hint=false;
 
 int main()
   {
 
-    cout<< "Welcome to Who wants to be a millionare?" << endl;
+    int answer;
+    string again;
+
+    do {
+
+    cout<< "Welcome to Who wants to be a millionare?" << "\n" << endl;
     main_menu ();
-    return 0;
+
+    cin >> answer;
+    cout<< "   "<< endl;
+
+    if (answer == 1 ){
+
+      cout <<"Good Luck!"<< "\n" << endl;
+
+      one_hundred_section ();
+     }
+
+     else {
+
+       cout <<"Goody bye!";
+
+       return 0;
+
+     }
+
+    cout << "Do you want to play again? (Press Yes or No)" << "\n" <<endl;
+    cin >> again;
+    cout << " " << endl;
+
+  } while (again== "Yes" || again == "yes");
+
 }
 
 
 void main_menu() {
-
-  int answer;
 
   cout<< "The game consists of answering a list of questions " << endl;
   cout<< "in order to gain certain amounts of money, from 100" << endl;
@@ -67,21 +88,7 @@ void main_menu() {
   cout <<"Remember! You can only use this hints after the 1000 dollars"<< endl;
   cout<< "and you'll be able to use them only once or else the game ends"<< "\n" << endl;
   cout<< "Are you ready to start? (Write 1 for yes, and 2 for no)"<< "\n" << endl;
-  cin >> answer;
-  cout<< "   "<< endl;
 
-  if (answer == 1 ){
-
-    cout <<"Good Luck!"<<"\n" << endl;
-
-    one_hundred_section ();
-   }
-
-   else {
-
-     cout <<"Goody bye!";
-
-   }
 }
 
 void one_hundred_section () {
@@ -105,8 +112,8 @@ void one_hundred_section () {
 
    else {
 
-     cout <<"You lost, the correct answer is a. Tea" << "\n" << endl;
-     // return 0;
+     cout <<"You lost, the correct answer is a. Tea" << endl;
+
    }
 }
 
@@ -134,7 +141,7 @@ void three_hundred_section () {
 else {
 
   cout <<"You lost, the correct answer is b. Camberra" << "\n" << endl;
-  // return 0;
+
    }
 }
 
@@ -146,7 +153,7 @@ void five_hundred_section () {
 		cout << "a. Donkey"  << endl;
 		cout << "b. Cat"  << endl;
 		cout << "c. Dragon"  << endl;
-		cout << "d. Princess Charming"  << "\n" << endl;
+		cout << "d. Prince Charming"  << "\n" << endl;
     cin >> answer_five_hundred_section;
 
     //sleep_for_ms(TIME_TO_ANSWER);
@@ -160,8 +167,8 @@ void five_hundred_section () {
 
 else {
 
-  cout <<"You lost, the correct answer is a. Donkey" << "\n" << endl;
-  // return 0;
+  cout <<"You lost, the correct answer is a. Donkey" << endl;
+
    }
 }
 
@@ -169,14 +176,13 @@ void one_thousand_section () {
 
   string answer_one_thousand_section;
 
-    cout << "Which of these is a player’s position in baseball?" << "\n" << endl;
+    cout << "Which of these is a position in baseball?" << "\n" << endl;
 		cout << "a. Running Back"  << endl;
 		cout << "b. Goalie"  << endl;
 		cout << "c. Right Field"  << endl;
 		cout << "d. Left Guard"  << "\n" << endl;
     cin >> answer_one_thousand_section;
 
-    //sleep_for_ms(TIME_TO_ANSWER);
 
   if (answer_one_thousand_section == "c"){
 
@@ -192,7 +198,7 @@ void one_thousand_section () {
 else {
 
     cout <<"You lost, the correct answer is c. Right Field" << "\n" << endl;
-  // return 0;
+
    }
 }
 
@@ -207,8 +213,6 @@ void three_thousand_section () {
   		cout << "d. Radiation"  << "\n" << endl;
       cin >> answer_three_thousand_section;
 
-    //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_three_thousand_section == "c"){
 
       cout << "Congratulations, you just earn 3,000 dollars!" << endl;
@@ -220,7 +224,7 @@ else if (answer_three_thousand_section == "p") {
 
   if (used_public_clue){
 
-      cout <<"you already used that hint" << endl;
+      cout <<"You already used that hint" << endl;
 
   }
 
@@ -231,8 +235,7 @@ else if (answer_three_thousand_section == "p") {
       cout <<"What is the answer?";
       cin >> answer_three_thousand_section;
 
-         used_public_clue=true;
-
+      used_public_clue=true;
 
       if (answer_three_thousand_section == "c" ){
 
@@ -243,7 +246,7 @@ else if (answer_three_thousand_section == "p") {
 
       else
 
-      cout <<"You lost, the correct answer is c. Light" << "\n" << endl;
+      cout <<"You lost, the correct answer is c. Light" << endl;
 
   }
 }
@@ -251,11 +254,10 @@ else if (answer_three_thousand_section == "p") {
 else if (answer_three_thousand_section == "cc"){
 
        string call_hint;
-         used_call_clue=true;
 
          if (used_call_clue){
 
-           cout <<"you already used that hint" << endl;
+           cout <<"You already used that hint" << endl;
 
          }
 
@@ -267,6 +269,8 @@ else if (answer_three_thousand_section == "cc"){
        cout <<"It's definetly answer c" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_three_thousand_section;
+
+       used_call_clue=true;
 
        if (answer_three_thousand_section == "c" ){
 
@@ -287,7 +291,7 @@ else if (answer_three_thousand_section == "50") {
 
   if (used_fifty_fifty){
 
-    cout <<"you already used that hint" << endl;
+    cout <<"You already used that hint" << endl;
 
   }
 
@@ -298,16 +302,18 @@ else if (answer_three_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_three_thousand_section;
 
+      used_fifty_fifty=true;
+
       if (answer_three_thousand_section == "c" ){
 
          cout << "Congratulations, you just earn 3,000 dollars!" << endl;
-        ten_thousand_section();
+         ten_thousand_section();
 
       }
 
       else
 
-      cout <<"You lost, the correct answer is c. Light" << "\n" << endl;
+        cout <<"You lost, the correct answer is c. Light" << "\n" << endl;
 
     }
 
@@ -315,8 +321,8 @@ else if (answer_three_thousand_section == "50") {
 
 else {
 
-  cout <<"You lost, the correct answer is c. Light" << "\n" << endl;
-  // return 0;
+      cout <<"You lost, the correct answer is c. Light" << "\n" << endl;
+
    }
 }
 
@@ -341,10 +347,9 @@ void five_thousand_section () {
 
 else if (answer_five_thousand_section == "p") {
 
-  if (used_public_clue==true){
+  if (used_public_clue){
 
-    cout <<"you already used that hint" << endl;
-
+      cout <<"You already used that hint" << endl;
   }
 
   else{
@@ -353,6 +358,8 @@ else if (answer_five_thousand_section == "p") {
       cout << "a. 30%  b. 15% c. 45% d. 10%" << endl;
       cout <<"What is the answer?";
       cin >> answer_five_thousand_section;
+
+      used_public_clue=true;
 
       if (answer_five_thousand_section == "c" ){
 
@@ -375,7 +382,7 @@ else if (answer_five_thousand_section == "cc" ){
 
        if (used_call_clue){
 
-         cout <<"you already used that hint" << endl;
+         cout <<"You already used that hint" << endl;
 
        }
 
@@ -388,6 +395,8 @@ else if (answer_five_thousand_section == "cc" ){
        cout <<"I think is c, I'm not sure" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_five_thousand_section;
+
+       used_call_clue=true;
 
        if (answer_five_thousand_section == "c" ){
 
@@ -407,7 +416,7 @@ else if (answer_five_thousand_section == "50") {
 
   if (used_fifty_fifty){
 
-    cout <<"you already used that hint" << endl;
+    cout <<"You already used that hint" << endl;
 
   }
 
@@ -419,23 +428,26 @@ else if (answer_five_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_five_thousand_section;
 
-      if (answer_five_thousand_section == "c" ){
+      used_fifty_fifty=true;
 
-         cout << "Congratulations, you just earn 5,000 dollars!" << endl;
-        ten_thousand_section();
+    if (answer_five_thousand_section == "c" ){
+
+      cout << "Congratulations, you just earn 5,000 dollars!" << endl;
+      ten_thousand_section();
 
       }
 
       else
 
       cout <<"You lost, the correct answer is c. Arabic" << "\n" << endl;
+
     }
 }
 
 else {
 
-  cout <<"You lost, the correct answer is c. Arabic" << "\n" << endl;
-  // return 0;
+     cout <<"You lost, the correct answer is c. Arabic" << "\n" << endl;
+
    }
 }
 
@@ -450,8 +462,6 @@ void ten_thousand_section() {
   		cout << "d. Stephenie Meyer"  << "\n" << endl;
       cin >> answer_ten_thousand_section;
 
-      //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_ten_thousand_section == "d"){
 
       cout << "Congratulations, you just earn 10,000 dollars!" << endl;
@@ -463,16 +473,18 @@ else if (answer_ten_thousand_section == "p") {
 
   if (used_public_clue){
 
-    cout <<"you already used that hint" << endl;
+      cout <<"You already used that hint" << endl;
 
   }
 
   else{
 
-      cout<<"You just selected the public hint" << "\n" << endl;
-      cout << "a.23 %  b.8 % c. 34 % d. 35%" << endl;
-      cout <<"What is the answer?";
-      cin >> answer_ten_thousand_section;
+     cout<<"You just selected the public hint" << "\n" << endl;
+     cout << "a.23 %  b.8 % c. 34 % d. 35%" << endl;
+     cout <<"What is the answer?";
+     cin >> answer_ten_thousand_section;
+
+     used_public_clue=true;
 
       if (answer_ten_thousand_section == "d" ){
 
@@ -483,7 +495,7 @@ else if (answer_ten_thousand_section == "p") {
 
       else
 
-      cout <<"You lost, the correct answer is d. Stephenie Meyer" << "\n" << endl;
+      cout <<"You lost, the correct answer is d. Stephenie Meyer" << endl;
 
   }
 }
@@ -494,7 +506,7 @@ else if (answer_ten_thousand_section == "cc"){
 
        if (used_call_clue){
 
-         cout <<"you already used that hint" << endl;
+         cout <<"You already used that hint" << endl;
 
        }
 
@@ -508,6 +520,8 @@ else if (answer_ten_thousand_section == "cc"){
        cout <<"What is the answer?" << endl;
        cin >> answer_ten_thousand_section;
 
+       used_call_clue=true;
+
        if (answer_ten_thousand_section == "d" ){
 
           cout << "Congratulations, you just earn 10,000 dollars!" << endl;
@@ -517,8 +531,7 @@ else if (answer_ten_thousand_section == "cc"){
 
        else
 
-       cout <<"You lost, the correct answer is d.Stephenie Meyer" << "\n" << endl;
-
+          cout <<"You lost, the correct answer is d.Stephenie Meyer" << endl;
   }
 }
 
@@ -526,7 +539,7 @@ else if (answer_ten_thousand_section == "50") {
 
   if (used_fifty_fifty){
 
-    cout <<"you already used that hint" << endl;
+    cout <<"You already used that hint" << endl;
 
   }
 
@@ -538,24 +551,26 @@ else if (answer_ten_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_ten_thousand_section;
 
+      used_fifty_fifty=true;
+
       if (answer_ten_thousand_section == "d" ){
 
-         cout << "Congratulations, you just earn 10,000 dollars!" << endl;
+        cout << "Congratulations, you just earn 10,000 dollars!" << endl;
         thirty_thousand_section();
 
       }
 
       else
 
-      cout <<"You lost, the correct answer is c. Stephenie Meyer" << "\n" << endl;
+         cout <<"You lost, the correct answer is d. Stephenie Meyer" <<  endl;
 
     }
 }
 
 else {
 
-  cout <<"You lost, the correct answer is d. Stephenie Meyer" << "\n" << endl;
-  // return 0;
+        cout <<"You lost, the correct answer is d. Stephenie Meyer" << endl;
+
    }
 }
 
@@ -570,20 +585,17 @@ void thirty_thousand_section() {
   		cout << "d. T-500"  << "\n" << endl;
       cin >> answer_thirty_thousand_section;
 
-      //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_thirty_thousand_section == "a"){
 
       cout << "Congratulations, you just earn 30,000 dollars!" << endl;
       fifty_thousand_section();
-
  }
 
 else if (answer_thirty_thousand_section == "p") {
 
   if (used_public_clue){
 
-    cout <<"you already used that hint" << endl;
+      cout <<"You already used that hint" << endl;
 
   }
 
@@ -594,6 +606,8 @@ else if (answer_thirty_thousand_section == "p") {
       cout <<"What is the answer?";
       cin >> answer_thirty_thousand_section;
 
+      used_public_clue=true;
+
       if (answer_thirty_thousand_section == "a" ){
 
         cout << "Congratulations, you just earn 30,000 dollars!" << endl;
@@ -603,7 +617,7 @@ else if (answer_thirty_thousand_section == "p") {
 
       else
 
-      cout <<"You lost, the correct answer is a. T-1000" << "\n" << endl;
+      cout <<"You lost, the correct answer is a. T-1000" << endl;
 
   }
 }
@@ -612,7 +626,7 @@ else if (answer_thirty_thousand_section == "cc"){
 
   if (used_call_clue){
 
-    cout <<"you already used that hint" << endl;
+       cout <<"You already used that hint" << endl;
 
   }
 
@@ -624,10 +638,22 @@ else if (answer_thirty_thousand_section == "cc"){
        cout << "Who do you wanna call?  ";
        cin >> call_hint;
 
-       cout <<"I haven't watched the movie, but the a sounds correct" << endl;
+       cout <<"I haven't watched the movie, but a sounds correct" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_thirty_thousand_section;
 
+       used_call_clue=true;
+
+       if (answer_thirty_thousand_section == "a" ){
+
+         cout << "Congratulations, you just earn 30,000 dollars!" << endl;
+         fifty_thousand_section();
+
+       }
+
+       else
+
+       cout <<"You lost, the correct answer is a. T-1000" << endl;
 
   }
 }
@@ -636,7 +662,7 @@ else if (answer_thirty_thousand_section == "50") {
 
   if (used_fifty_fifty){
 
-    cout <<"you already used that hint" << endl;
+    cout <<"You already used that hint" << endl;
 
   }
 
@@ -648,14 +674,27 @@ else if (answer_thirty_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_thirty_thousand_section;
 
+      used_fifty_fifty=true;
+
+      if (answer_thirty_thousand_section == "a" ){
+
+        cout << "Congratulations, you just earn 30,000 dollars!" << endl;
+        fifty_thousand_section();
+
+      }
+
+      else
+
+      cout <<"You lost, the correct answer is a. T-1000" << endl;
+
     }
   }
 
 
 else {
 
-  cout <<"You lost, the correct answer is a. T-1000" << "\n" << endl;
-  // return 0;
+     cout <<"You lost, the correct answer is a. T-1000" << "\n" << endl;
+
    }
 }
 
@@ -670,12 +709,10 @@ void fifty_thousand_section () {
   		cout << "d. John Adams"  << "\n" << endl;
       cin >> answer_fifty_thousand_section;
 
-      //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_fifty_thousand_section == "d"){
 
       cout << "Congratulations, you just earn 50,000 dollars!" << endl;
-      fifty_thousand_section ();
+      one_hundred_thousand_section ();
 
  }
 
@@ -683,7 +720,7 @@ else if (answer_fifty_thousand_section == "p") {
 
   if (used_public_clue){
 
-    cout <<"you already used that hint" << endl;
+    cout <<"You already used that hint" << endl;
 
   }
 
@@ -694,6 +731,20 @@ else if (answer_fifty_thousand_section == "p") {
       cout <<"What is the answer?";
       cin >> answer_fifty_thousand_section;
 
+      used_public_clue=true;
+
+        if (answer_fifty_thousand_section == "d" ){
+
+        cout << "Congratulations, you just earn 50,000 dollars!" << endl;
+        one_hundred_thousand_section();
+
+      }
+
+      else
+
+
+      cout <<"You lost, the correct answer is d. John Adams" << endl;
+
   }
 }
 
@@ -701,22 +752,34 @@ else if (answer_fifty_thousand_section == "cc"){
 
        double call_hint;
 
-       if (used_call_clue){
+  if (used_call_clue){
 
-         cout <<"you already used that hint" << endl;
+      cout <<"You already used that hint" << endl;
 
        }
 
-       else{
+   else{
 
-       cout<<"You just selected the call hint" << "\n" << endl;
-       cout << "Who do you wanna call?  ";
-       cin >> call_hint;
+      cout<<"You just selected the call hint" << "\n" << endl;
+      cout << "Who do you wanna call?  ";
+      cin >> call_hint;
 
        cout <<"I'm not sure, maybe d" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_fifty_thousand_section;
 
+       used_call_clue=true;
+
+       if (answer_fifty_thousand_section == "d" ){
+
+       cout << "Congratulations, you just earn 50,000 dollars!" << endl;
+       one_hundred_thousand_section();
+
+     }
+
+     else
+
+     cout <<"You lost, the correct answer is d. John Adams" << endl;
 
   }
 
@@ -726,7 +789,7 @@ else if (answer_fifty_thousand_section == "50") {
 
   if (used_fifty_fifty){
 
-    cout <<"you already used that hint" << endl;
+    cout <<"You already used that hint" << endl;
 
   }
 
@@ -738,13 +801,26 @@ else if (answer_fifty_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_fifty_thousand_section;
 
+      used_fifty_fifty=true;
+
+        if (answer_fifty_thousand_section == "d" ){
+
+        cout << "Congratulations, you just earn 50,000 dollars!" << endl;
+        one_hundred_thousand_section();
+
+      }
+
+      else
+
+      cout <<"You lost, the correct answer is d. John Adams" << endl;
+
     }
 }
 
 else {
 
-  cout <<"You lost, the correct answer is d. John Adams" << "\n" << endl;
-  // return 0;
+      cout <<"You lost, the correct answer is d. John Adams" << "\n" << endl;
+
    }
 }
 
@@ -760,11 +836,9 @@ void one_hundred_thousand_section () {
   		cout << "d. Kingdom"  << "\n" << endl;
       cin >> answer_one_hundred_thousand_section;
 
-    //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_one_hundred_thousand_section == "d"){
 
-      cout << "Congratulations, you just earn 200,000 dollars!" << endl;
+      cout << "Congratulations, you just earn 100,000 dollars!" << endl;
       two_hundred_thousand_section();
 
  }
@@ -783,6 +857,19 @@ else if (answer_one_hundred_thousand_section== "p") {
       cout << "a.20 %  b.11 % c. 34% d. 35%" << endl;
       cout <<"What is the answer?";
       cin >> answer_one_hundred_thousand_section;
+
+      used_public_clue=true;
+
+      if (answer_one_hundred_thousand_section == "d" ){
+
+      cout << "Congratulations, you just earn 100,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+    else
+
+     cout <<"You lost, the correct answer is d. Kingdom" << endl;
 
   }
 }
@@ -803,10 +890,22 @@ else if (answer_one_hundred_thousand_section == "cc"){
        cout << "Who do you wanna call?  ";
        cin >> call_hint;
 
+       used_call_clue=true;
+
        cout <<"I'm not sure, maybe d" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_one_hundred_thousand_section;
 
+    if (answer_one_hundred_thousand_section == "d" ){
+
+      cout << "Congratulations, you just earn 100,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+    else
+
+    cout <<"You lost, the correct answer is d. Kingdom " << endl;
 
   }
 }
@@ -827,13 +926,26 @@ else if (answer_one_hundred_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_one_hundred_thousand_section;
 
+      used_fifty_fifty=true;
+
+      if (answer_one_hundred_thousand_section == "d" ){
+
+      cout << "Congratulations, you just earn 100,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+    else
+
+      cout <<"You lost, the correct answer is d. Kingdom " << endl;
+
     }
 }
 
 else {
 
   cout <<"You lost, the correct answer is d. Kingdom" << "\n" << endl;
-  // return 0;
+
    }
 }
 
@@ -848,11 +960,9 @@ void two_hundred_thousand_section () {
   		cout << "d. Do widzenia"  << "\n" << endl;
       cin >> answer_two_hundred_thousand_section;
 
-      //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_two_hundred_thousand_section == "b"){
 
-      cout << "Congratulations, you just earn 400,000 dollars!" << endl;
+      cout << "Congratulations, you just earn 200,000 dollars!" << endl;
       four_hundred_thousand_section ();
 
  }
@@ -871,6 +981,18 @@ else if (answer_two_hundred_thousand_section == "p") {
       cout << "a.20 %  b.35 % c. 34% d. 11%" << endl;
       cout <<"What is the answer?";
       cin >> answer_two_hundred_thousand_section;
+      used_public_clue=true;
+
+      if (answer_two_hundred_thousand_section == "b" ){
+
+      cout << "Congratulations, you just earn 200,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+    else
+
+    cout <<"You lost, the correct answer is b. Dzien dobry " << endl;
 
   }
 }
@@ -891,9 +1013,22 @@ else if (answer_two_hundred_thousand_section == "cc"){
        cout << "Who do you wanna call?  ";
        cin >> call_hint;
 
+       used_call_clue=true;
+
        cout <<"I'm not sure, maybe b" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_two_hundred_thousand_section;
+
+       if (answer_two_hundred_thousand_section == "b" ){
+
+       cout << "Congratulations, you just earn 200,000 dollars!" << endl;
+       fifty_thousand_section();
+
+     }
+
+       else
+
+       cout <<"You lost, the correct answer is b. Dzien dobry " << endl;
 
   }
 }
@@ -914,13 +1049,25 @@ else if (answer_two_hundred_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_two_hundred_thousand_section;
 
+      used_fifty_fifty=true;
+
+      if (answer_two_hundred_thousand_section == "b" ){
+
+      cout << "Congratulations, you just earn 200,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+      else
+
+      cout <<"You lost, the correct answer is b. Dzien dobry " << endl;
+
     }
 }
 
 else {
 
-  cout <<"You lost, the correct answer is b. Dzien dobry" << "\n" << endl;
-  // return 0;
+      cout <<"You lost, the correct answer is b. Dzien dobry" << "\n" << endl;
    }
 }
 
@@ -931,11 +1078,9 @@ void four_hundred_thousand_section () {
       cout << "In Greek mythology Clotho, Lachesis, and Atropos were what famed trio?" << "\n" << endl;
   		cout << "a. Graea, Servants of the Gorgons "  << endl;
   		cout << "b. Erinyes Or Furies "  << endl;
-  		cout << "c.  Moirae Or Fates"  << endl;
+  		cout << "c. Moirae Or Fates"  << endl;
   		cout << "d. Harpies"  << "\n" << endl;
       cin >> answer_four_hundred_thousand_section;
-
-      //sleep_for_ms(TIME_TO_ANSWER);
 
   if (answer_four_hundred_thousand_section == "c"){
 
@@ -959,6 +1104,19 @@ else if (answer_four_hundred_thousand_section == "p") {
       cout <<"What is the answer?";
       cin >> answer_four_hundred_thousand_section;
 
+      used_public_clue=true;
+
+      if (answer_four_hundred_thousand_section == "c" ){
+
+      cout << "Congratulations, you just earn 400,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+      else
+
+      cout <<"You lost, the correct answer is c.  Moirae Or Fates" << endl;
+
   }
 }
 
@@ -978,9 +1136,23 @@ else if (answer_four_hundred_thousand_section == "cc"){
        cout << "Who do you wanna call?  ";
        cin >> call_hint;
 
+       used_call_clue=true;
+
        cout <<"I'm not sure, maybe c" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_four_hundred_thousand_section;
+
+       if (answer_four_hundred_thousand_section == "c" ){
+
+       cout << "Congratulations, you just earn 400,000 dollars!" << endl;
+       fifty_thousand_section();
+
+     }
+
+       else
+
+       cout <<"You lost, the correct answer is c.  Moirae Or Fates" << endl;
+
   }
 }
 
@@ -1000,13 +1172,26 @@ else if (answer_four_hundred_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_four_hundred_thousand_section;
 
+      used_fifty_fifty=true;
+
+      if (answer_four_hundred_thousand_section == "c" ){
+
+      cout << "Congratulations, you just earn 400,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+      else
+
+      cout <<"You lost, the correct answer is c.  Moirae Or Fates" << endl;
+
     }
 }
 
 else {
 
-  cout <<"You lost, the correct answer is c. Moira or Fates" << "\n" << endl;
-  // return 0;
+      cout <<"You lost, the correct answer is c. Moira or Fates" << "\n" << endl;
+
    }
 }
 
@@ -1017,13 +1202,11 @@ void eight_hundred_thousand_section () {
       cout << "Who was the history muse in Greek mythology?" << "\n" << endl;
   		cout << "a. Clio "  << endl;
   		cout << "b. Polyhymnia "  << endl;
-  		cout << "c.  Calliope"  << endl;
+  		cout << "c. Calliope"  << endl;
   		cout << "d. Erato"  << "\n" << endl;
       cin >> answer_eight_hundred_thousand_section;
 
-      //sleep_for_ms(TIME_TO_ANSWER);
-
-  if (answer_eight_hundred_thousand_section == "c"){
+  if (answer_eight_hundred_thousand_section == "a"){
 
       cout << "Congratulations, you just earn 800,000 dollars!" << endl;
       cout << "one more questions and you'll win 1 million dollars!" << "\n" << endl;
@@ -1035,7 +1218,7 @@ else if (answer_eight_hundred_thousand_section == "p") {
 
   if (used_public_clue){
 
-    cout <<"you already used that hint" << endl;
+      cout <<"you already used that hint" << endl;
 
   }
 
@@ -1046,6 +1229,19 @@ else if (answer_eight_hundred_thousand_section == "p") {
       cout <<"What is the answer?";
       cin >> answer_eight_hundred_thousand_section;
 
+      used_public_clue=true;
+
+      if (answer_eight_hundred_thousand_section == "a" ){
+
+      cout << "Congratulations, you just earn 800,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+      else
+
+      cout <<"You lost, the correct answer is a. Clio" << endl;
+
   }
 }
 
@@ -1053,21 +1249,34 @@ else if (answer_eight_hundred_thousand_section == "cc"){
 
        double call_hint;
 
-       if (used_call_clue){
+    if (used_call_clue){
 
-         cout <<"you already used that hint" << endl;
+       cout <<"you already used that hint" << endl;
 
        }
 
-       else{
+    else{
 
        cout<<"You just selected the call hint" << "\n" << endl;
        cout << "Who do you wanna call?  ";
        cin >> call_hint;
 
+       used_call_clue=true;
+
        cout <<"I'm not sure, maybe a" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_eight_hundred_thousand_section;
+
+       if (answer_eight_hundred_thousand_section == "a" ){
+
+       cout << "Congratulations, you just earn 800,000 dollars!" << endl;
+       fifty_thousand_section();
+
+     }
+
+       else
+
+       cout <<"You lost, the correct answer is a. Clio" << endl;
   }
 }
 
@@ -1087,13 +1296,26 @@ else if (answer_eight_hundred_thousand_section == "50") {
       cout <<"What is the answer?" << endl;
       cin >> answer_eight_hundred_thousand_section;
 
+      used_fifty_fifty=true;
+
+      if (answer_eight_hundred_thousand_section == "a" ){
+
+      cout << "Congratulations, you just earn 800,000 dollars!" << endl;
+      fifty_thousand_section();
+
+    }
+
+      else
+
+      cout <<"You lost, the correct answer is a. Clio" << endl;
+
     }
 }
 
 else {
 
-  cout <<"You lost, the correct answer is a. Clio" << "\n" << endl;
-  // return 0;
+      cout <<"You lost, the correct answer is a. Clio" << "\n" << endl;
+
    }
 }
 
@@ -1108,12 +1330,10 @@ void one_million_dollar_section () {
   		cout << "d. 1953"  << "\n" << endl;
       cin >> answer_one_million_dollar_section;
 
-      //sleep_for_ms(TIME_TO_ANSWER);
-
   if (answer_one_million_dollar_section == "c"){
 
       cout << "CONGRATULATIONS!!! YOU WON 1 MILLION DOLLARS!!!" << endl;
-      cout << "You are very smart" << endl;
+      cout << "You are very smart!!!!!!!!!!" << endl;
 
  }
 
@@ -1135,13 +1355,23 @@ else if (answer_one_million_dollar_section == "p") {
       cout <<"What is the answer?";
       cin >> answer_one_million_dollar_section;
 
+       if (answer_one_million_dollar_section == "c" ){
+
+         cout << "CONGRATULATIONS!!! YOU WON 1 MILLION DOLLARS!!!" << endl;
+         cout << "You are very smart!!!!!!!!!!" << endl;
+
+     }
+
+       else
+
+        cout <<"You lost, the correct answer is c. 1950" << endl;
+
   }
 }
 
 else if (answer_one_million_dollar_section == "cc"){
 
        double call_hint;
-       used_call_clue=true;
 
        if (used_call_clue){
 
@@ -1155,12 +1385,23 @@ else if (answer_one_million_dollar_section == "cc"){
        cout << "Who do you wanna call?  ";
        cin >> call_hint;
 
+       used_call_clue=true;
+
        cout <<"I'm not sure, maybe c" << endl;
        cout <<"What is the answer?" << endl;
        cin >> answer_one_million_dollar_section;
 
-          used_call_clue=true;
+       if (answer_one_million_dollar_section == "c" ){
 
+         cout << "CONGRATULATIONS!!! YOU WON 1 MILLION DOLLARS!!!" << endl;
+
+     }
+
+       else
+
+         cout <<"You lost, the correct answer is c. 1950" << endl;
+
+         used_call_clue=true;
   }
 }
 
@@ -1174,23 +1415,31 @@ else if (answer_one_million_dollar_section == "50") {
 
       else{
 
-      cout<<"You just selected the 50/50 hint" << "\n" << endl;
-      cout << "c. 1950" << endl;
-      cout << "d. 1953"  << endl;
+        cout<<"You just selected the 50/50 hint" << "\n" << endl;
+        cout << "c. 1950" << endl;
+        cout << "d. 1953"  << endl;
 
-      used_fifty_fifty=true;
+        used_fifty_fifty=true;
+
+      if (answer_one_million_dollar_section == "c" ){
+
+        cout << "CONGRATULATIONS!!! YOU WON 1 MILLION DOLLARS!!!" << endl;
+
+    }
+
+      else
+
+        cout <<"You lost, the correct answer is c. 1950" << endl;
 
       }
 
-      cout <<"What is the answer?" << endl;
-      cin >> answer_one_million_dollar_section;
-
+        cout <<"What is the answer?" << endl;
+        cin >> answer_one_million_dollar_section;
   }
-
 
 else {
 
-  cout <<"You lost, the correct answer is c. 1950" << "\n" << endl;
+      cout <<"You lost, the correct answer is c. 1950" << "\n" << endl;
 
    }
 }

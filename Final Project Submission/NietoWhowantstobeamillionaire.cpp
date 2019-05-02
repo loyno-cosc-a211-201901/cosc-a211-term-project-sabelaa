@@ -24,6 +24,7 @@ void two_hundred_thousand_section ();
 void four_hundred_thousand_section ();
 void eight_hundred_thousand_section ();
 void one_million_dollar_section ();
+void game_reset ();
 
 
 bool used_public_clue= false;
@@ -48,7 +49,7 @@ int main()
     if (answer == 1 ){
 
       cout <<"Good Luck!"<< "\n" << endl;
-
+      game_reset ();
       one_hundred_section ();
      }
 
@@ -1442,4 +1443,11 @@ else {
       cout <<"You lost, the correct answer is c. 1950" << "\n" << endl;
 
    }
+}
+
+void game_reset(){
+  used_public_clue= false;
+  used_call_clue=false;
+  used_fifty_fifty=false;
+	
 }
